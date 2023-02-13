@@ -2,14 +2,24 @@
 <html  xmlns="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<div th:replace="~{fragments :: head}"></div>
 <title>pagina dei film </title>
 </head>
 <body>
 
-<ul>
-	<li th:each="song : ${songs}">
-		<a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}"></a>
-	</li>
-</ul>	
+<div th:replace="~{fragments :: navbar('home')}"></div>
+
+<div class="text-center">
+	<h2>Best Songs</h2>
+	<div>
+		<ul class = "">
+			<li th:each="song : ${songs}" class = "list-group-numbered ">
+				<a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}" class = "text-decoration-none text-black p-3 d-inline-block "></a>
+			</li>
+		</ul>
+	</div>
+
+</div>	
+<div th:replace="~{fragments :: script}"></div>
 </body>
 </html>

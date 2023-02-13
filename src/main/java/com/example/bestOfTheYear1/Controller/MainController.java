@@ -21,7 +21,6 @@ public class MainController {
 	public String home(Model model) {
 		String name = "samuele";
 		model.addAttribute("name", name);
-		
 		return "index";
 	}
 	
@@ -46,6 +45,7 @@ public class MainController {
 	}
 	
 
+	
 	@GetMapping("/movies/{id}")
 	public String film(Model model, @PathVariable("id") String id) {
 		model.addAttribute("infoMovie", ms.getIdMovies(Integer.parseInt(id)));

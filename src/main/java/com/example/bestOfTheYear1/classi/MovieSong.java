@@ -10,16 +10,21 @@ public class MovieSong {
 	
 	public  MovieSong() {
 		m = new ArrayList<>();
+		
 		s = new ArrayList<>();
-		Movie movie1 = new Movie(1, "film1");
-		Movie movie2 = new Movie(2, "film2");
-		Movie movie3 = new Movie(3, "film3");
-		Song song1 = new Song(1, "canzone1");
-		Song song2 = new Song(2, "canzone2");
-		Song song3 = new Song(3, "canzone3");
+		
+		Movie movie1 = new Movie(1, "The martian");
+		Movie movie2 = new Movie(2, "Avatar");
+		Movie movie3 = new Movie(3, "Captain america");
+		Song song1 = new Song(1, "Welcome to the jungle");
+		
+		Song song2 = new Song(2, "In the end");
+		Song song3 = new Song(3, "Lost in the echo");
+		
 		m.add(movie1);
 		m.add(movie2);
 		m.add(movie3);
+		
 		s.add(song1);
 		s.add(song2);
 		s.add(song3);
