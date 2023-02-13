@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.bestOfTheYear1.classi.Movie;
+import com.example.bestOfTheYear1.classi.MovieSong;
 import com.example.bestOfTheYear1.classi.Song;
 
 @Controller
@@ -23,42 +25,38 @@ public class MainController {
 		return "index";
 	}
 	
-	
-	private List<Movie> getBestMovies(){
-		List<Movie> m = new ArrayList<>();
-		Movie movie1 = new Movie(1, "film1");
-		Movie movie2 = new Movie(2, "film2");
-		Movie movie3 = new Movie(3, "film3");
-		m.add(movie1);
-		m.add(movie2);
-		m.add(movie3);
-		return m;
-	}
-	
+
+	MovieSong ms = new MovieSong();
+
 	@GetMapping("/movies")
 	public String bestMovie(Model model) {
-		List<Movie> bm = getBestMovies();
+		List<Movie> bm = ms.getMovies();
 		model.addAttribute("movies", bm);
 		return "movie";
+		
 	}
  	
-	
-	
-	private List<Song> getBestSongs(){
-		List<Song> s = new ArrayList<>();
-		Song song1 = new Song(1, "canzone1");
-		Song song2 = new Song(2, "canzone2");
-		Song song3 = new Song(3, "canzone3");
-		s.add(song1);
-		s.add(song2);
-		s.add(song3);
-		return s;
-	}
+
 	
 	@GetMapping("/songs")
 	public String bestSong(Model model) {
-		List<Song> bs = getBestSongs();
+		List<Song> bs = ms.getSong();
 		model.addAttribute("songs", bs);
 		return "song";
 	}
+	
+
+	@GetMapping("/movies/{id}")
+	public String film(Model model, @PathVariable("id") String id) {
+		model.addAttribute("infoMovie", ms.getIdMovies(Integer.parseInt(id)));
+		return "infoMovie";
+	}
+	
+	@GetMapping("/songs/{id}")
+	public String canzone(Model model, @PathVariable("id") String id) {
+		model.addAttribute("infoSong", ms.getIdSong(Integer.parseInt(id)));
+		return "infoSong";
+	}
+	
+
 }

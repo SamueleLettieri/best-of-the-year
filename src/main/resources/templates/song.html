@@ -2,11 +2,14 @@
 <html  xmlns="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>pagina della musica </title>
+<title>pagina dei film </title>
 </head>
 <body>
 
-<h1> [[${songs}]] </h1>
-
+<ul>
+	<li th:each="song : ${songs}">
+		<a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}"></a>
+	</li>
+</ul>	
 </body>
 </html>
